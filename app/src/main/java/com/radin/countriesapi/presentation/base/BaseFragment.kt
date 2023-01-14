@@ -1,4 +1,4 @@
-package com.radin.countriesapi.ui.base
+package com.radin.countriesapi.presentation.base
 
 import android.os.Bundle
 import android.view.View
@@ -8,7 +8,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.viewbinding.ViewBinding
-import com.radin.countriesapi.ui.state.UIState
+import com.radin.countriesapi.presentation.state.UIState
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
@@ -19,7 +19,7 @@ abstract class BaseFragment<BaseViewBinding : ViewBinding, ViewModel : BaseViewM
     @LayoutRes layoutId: Int,
 ) : Fragment(layoutId) {
 
-    protected abstract var binding: BaseViewBinding?
+    protected abstract val binding: BaseViewBinding
     protected abstract val viewModel: ViewModel
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -28,7 +28,7 @@ abstract class BaseFragment<BaseViewBinding : ViewBinding, ViewModel : BaseViewM
         setupViews()
         setupListeners()
         setupRequests()
-        setupCollects()
+        setupCollects(view)
     }
 
     open fun initialize() {
@@ -43,7 +43,7 @@ abstract class BaseFragment<BaseViewBinding : ViewBinding, ViewModel : BaseViewM
     open fun setupRequests() {
     }
 
-    open fun setupCollects() {
+    open fun setupCollects(view: View) {
     }
 
     /**
@@ -71,22 +71,6 @@ abstract class BaseFragment<BaseViewBinding : ViewBinding, ViewModel : BaseViewM
                             success?.invoke(it.data)
                         }
                     }
-                }
-            }
-        }
-    }
-
-    /**
-     * Collect [StateFlow] without states
-     */
-    protected fun <T> StateFlow<T>.collectIdle(
-        state: Lifecycle.State = Lifecycle.State.CREATED,
-        action: suspend (T) -> Unit,
-    ) {
-        viewLifecycleOwner.lifecycleScope.launch {
-            viewLifecycleOwner.repeatOnLifecycle(state) {
-                this@collectIdle.collect {
-                    action(it)
                 }
             }
         }
