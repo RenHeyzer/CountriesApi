@@ -1,4 +1,4 @@
-package com.radin.countriesapi.ui.state
+package com.radin.countriesapi.presentation.state
 
 /**
  * Request state monitoring utility
