@@ -1,12 +1,11 @@
-package com.radin.countriesapi.ui.base
+package com.radin.countriesapi.presentation.base
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.radin.countriesapi.either.Either
-import com.radin.countriesapi.ui.state.UIState
+import com.radin.countriesapi.domain.either.Either
+import com.radin.countriesapi.presentation.state.UIState
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 abstract class BaseViewModel : ViewModel() {
@@ -20,7 +19,7 @@ abstract class BaseViewModel : ViewModel() {
     protected fun <S, T> collectState(
         state: MutableStateFlow<UIState<T>>,
         request: Flow<Either<String, S>>,
-        mappedData: ((data: S) -> T)? = null,
+        mapping: ((data: S) -> T)? = null
     ) {
         viewModelScope.launch {
             request.collect {
@@ -28,33 +27,15 @@ abstract class BaseViewModel : ViewModel() {
                     is Either.Left -> {
                         it.message?.let { error ->
                             state.value = UIState.Error(error)
-
                         }
                     }
                     is Either.Right -> {
                         it.data?.let { data ->
-                            mappedData?.let { map ->
+                            mapping?.let { map ->
                                 state.value = UIState.Success(map(data))
                             }
                         }
                     }
-                }
-            }
-        }
-    }
-
-    /**
-     * Collect network request with map model from domain to ui
-     */
-    protected fun <S, T> collectIdle(
-        state: MutableStateFlow<T>,
-        request: Flow<S>,
-        mappedData: ((data: S) -> T)? = null,
-    ) {
-        viewModelScope.launch {
-            request.collectLatest {
-                mappedData?.let { map ->
-                    state.value = map(it)
                 }
             }
         }
