@@ -3,7 +3,7 @@ package com.radin.countriesapi.ui.base
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.radin.countriesapi.either.Either
-import com.renheyzer.common.state.UIState
+import com.radin.countriesapi.ui.state.UIState
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.collectLatest
