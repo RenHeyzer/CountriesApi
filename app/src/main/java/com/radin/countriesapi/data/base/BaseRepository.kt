@@ -1,6 +1,6 @@
 package com.radin.countriesapi.data.base
 
-import com.radin.countriesapi.either.Either
+import com.radin.countriesapi.domain.either.Either
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
