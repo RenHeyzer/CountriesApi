@@ -38,7 +38,7 @@ object Dependencies {
     }
 
     object ViewBindingPropertyDelegate {
-        private const val version = "1.5.3"
+        private const val version = "1.5.6"
         const val bindingNoReflection =
             "com.github.kirich1409:viewbindingpropertydelegate-noreflection:$version"
     }
@@ -67,14 +67,5 @@ object Dependencies {
     object Hilt {
         const val hiltAndroid = "com.google.dagger:hilt-android:${Versions.hilt}"
         const val hiltCompiler = "com.google.dagger:hilt-compiler:${Versions.hilt}"
-    }
-
-    object Coil {
-        const val coil = "io.coil-kt:coil:${Versions.coil}"
-        const val coilSvg = "io.coil-kt:coil-svg:${Versions.coil}"
-    }
-
-    object Inject {
-        const val inject = "javax.inject:javax.inject:1"
     }
 }
