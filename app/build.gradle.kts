@@ -3,6 +3,7 @@ plugins {
     kotlin(Plugins.kotlinAndroid)
     kotlin(Plugins.kapt)
     id(Plugins.hilt)
+    id(Plugins.safeArgs)
 }
 
 android {
@@ -80,4 +81,7 @@ dependencies {
     // Coroutines
     implementation(Dependencies.Coroutines.kotlinCoroutines)
     implementation(Dependencies.Coroutines.kotlinCoroutinesCore)
+
+    // ViewBinding
+    implementation(Dependencies.ViewBindingPropertyDelegate.bindingNoReflection)
 }

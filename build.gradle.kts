@@ -4,4 +4,5 @@ plugins {
     id(Plugins.androidLibrary) version Versions.application apply false
     kotlin(Plugins.kotlinAndroid) version Versions.kotlinAndroid apply false
     id(Plugins.hilt) version Versions.hilt apply false
+    id(Plugins.safeArgs) version Versions.navigation apply false
 }
