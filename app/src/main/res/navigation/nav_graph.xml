@@ -7,7 +7,23 @@
 
     <fragment
         android:id="@+id/listOfCountiresFragment"
-        android:name="com.radin.countriesapi.ui.fragments.countries.ListOfCountriesFragment"
-        android:label="fragment_list_of_countires"
-        tools:layout="@layout/fragment_list_of_countires" />
+        android:name="com.radin.countriesapi.presentation.ui.fragments.countries.ListOfCountriesFragment"
+        android:label="Countries"
+        tools:layout="@layout/fragment_list_of_countires">
+        <action
+            android:id="@+id/action_listOfCountiresFragment_to_countryDetailFragment"
+            app:destination="@id/countryDetailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/countryDetailFragment"
+        android:name="com.radin.countriesapi.presentation.ui.fragments.countries.detail.CountryDetailFragment"
+        android:label="{name}"
+        tools:layout="@layout/fragment_country_detail" >
+        <argument
+            android:name="name"
+            app:argType="string"
+            android:defaultValue="" />
+    </fragment>
+
 </navigation>
