@@ -1,0 +1,15 @@
+object Versions {
+    const val core = "1.9.0"
+    const val material = "1.7.0"
+    const val constraint = "2.1.4"
+    const val appCompat = "1.6.0"
+    const val application = "7.3.1"
+    const val kotlinAndroid = "1.7.20"
+    const val coroutines = "1.6.4"
+    const val navigation = "2.5.3"
+    const val retrofit = "2.9.0"
+    const val lifecycles = "2.4.0"
+    const val hilt = "2.44"
+    const val coil = "1.3.2"
+    const val gson = "2.9.0"
+}
