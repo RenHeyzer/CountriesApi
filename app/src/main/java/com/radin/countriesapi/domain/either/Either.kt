@@ -1,4 +1,4 @@
-package com.radin.countriesapi.either
+package com.radin.countriesapi.domain.either
 
 /**
  * object holding an exception or a success
