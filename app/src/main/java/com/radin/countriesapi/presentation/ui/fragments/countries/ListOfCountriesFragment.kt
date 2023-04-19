@@ -1,6 +1,7 @@
 package com.radin.countriesapi.presentation.ui.fragments.countries
 
 import android.view.View
+import android.widget.SearchView
 import androidx.core.view.forEach
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
@@ -13,6 +14,7 @@ import com.radin.countriesapi.presentation.base.BaseFragment
 import com.radin.countriesapi.presentation.extensions.navigateSafely
 import com.radin.countriesapi.presentation.ui.adapters.CountriesAdapter
 import dagger.hilt.android.AndroidEntryPoint
+import java.util.UUID
 
 @AndroidEntryPoint
 class ListOfCountriesFragment :
@@ -29,9 +31,21 @@ class ListOfCountriesFragment :
 
     override fun setupListeners() {
         binding.btnRefresh.setOnClickListener {
-            viewModel.getAllCountries()
+            viewModel.setRefreshKey(UUID.randomUUID().toString())
             setupVisibility(p1 = false, p2 = true)
         }
+        binding.svSearchCountry.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(query: String?): Boolean {
+                query?.let {
+                    viewModel.setQuery(it)
+                }
+                return false
+            }
+        })
     }
 
     override fun setupCollects(view: View) {

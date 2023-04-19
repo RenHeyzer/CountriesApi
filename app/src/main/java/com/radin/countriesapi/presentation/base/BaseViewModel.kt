@@ -6,6 +6,7 @@ import com.radin.countriesapi.domain.either.Either
 import com.radin.countriesapi.presentation.state.UIState
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
 abstract class BaseViewModel : ViewModel() {

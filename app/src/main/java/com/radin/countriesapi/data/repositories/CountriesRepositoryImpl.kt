@@ -16,8 +16,8 @@ class CountriesRepositoryImpl @Inject constructor(
         }
     }
 
-    override fun getCountryDetail(name: String) = doRequest {
-        countriesApiService.getCountryDetail(name).map {
+    override fun searchCountryByName(name: String) = doRequest {
+        countriesApiService.searchCountryByName(name).map {
             it.toDomain()
         }
     }

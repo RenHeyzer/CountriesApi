@@ -22,27 +22,27 @@ class CountryDetailFragment : BaseFragment<FragmentCountryDetailBinding, Country
     private val args by navArgs<CountryDetailFragmentArgs>()
 
     override fun setupRequests() {
-        viewModel.getCountryDetail(args.name)
+//        viewModel.getCountryDetail(args.name)
     }
 
-    @SuppressLint("SetTextI18n")
-    override fun setupCollects(view: View) = with(binding) {
-        viewModel.countryDetailState.collectUIState(
-            success = { country ->
-                country[0].apply {
-                    ivCountryFlag.loadRoundImage(flags.png)
-                    tvCountryName.text = name
-                    tvRegion.text = getString(R.string.text_region) + " $region"
-                    tvCapital.text = getString(R.string.text_capital) + " $capital"
-                    tvTimezone.text =
-                        getString(R.string.text_timezone) + " ${timezones?.get(0)}"
-                    tvCurrency.text =
-                        getString(R.string.text_currency) + " ${currencies?.get(0)?.name} " +
-                                "[${currencies?.get(0)?.symbol}]"
-                }
-            }, error = { message ->
-                Snackbar.make(view, message, Snackbar.LENGTH_LONG).show()
-            }
-        )
-    }
+//    @SuppressLint("SetTextI18n")
+//    override fun setupCollects(view: View) = with(binding) {
+//        viewModel.countryDetailState.collectUIState(
+//            success = { country ->
+//                country[0].apply {
+//                    ivCountryFlag.loadRoundImage(flags.png)
+//                    tvCountryName.text = name
+//                    tvRegion.text = getString(R.string.text_region) + " $region"
+//                    tvCapital.text = getString(R.string.text_capital) + " $capital"
+//                    tvTimezone.text =
+//                        getString(R.string.text_timezone) + " ${timezones?.get(0)}"
+//                    tvCurrency.text =
+//                        getString(R.string.text_currency) + " ${currencies?.get(0)?.name} " +
+//                                "[${currencies?.get(0)?.symbol}]"
+//                }
+//            }, error = { message ->
+//                Snackbar.make(view, message, Snackbar.LENGTH_LONG).show()
+//            }
+//        )
+//    }
 }

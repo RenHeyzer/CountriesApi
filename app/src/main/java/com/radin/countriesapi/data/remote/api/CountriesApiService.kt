@@ -11,7 +11,7 @@ interface CountriesApiService {
     suspend fun getAllCountries(): List<CountryDto>
 
     @GET(Constants.BY_NAME_ENDPOINT)
-    suspend fun getCountryDetail(
+    suspend fun searchCountryByName(
         @Path("name") name: String
     ): List<CountryDto>
 }

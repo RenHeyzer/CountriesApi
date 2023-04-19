@@ -8,5 +8,5 @@ interface CountriesRepository {
 
     fun getAllCountries(): Flow<Either<String, List<Country>>>
 
-    fun getCountryDetail(name: String): Flow<Either<String, List<Country>>>
+    fun searchCountryByName(name: String): Flow<Either<String, List<Country>>>
 }
